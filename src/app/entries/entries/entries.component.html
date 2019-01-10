@@ -1,0 +1,52 @@
+<div class="entries-container">
+  <div class="header">
+    <mat-form-field floatPlaceholder="never">
+      <input matInput [formControl]="filterControl" placeholder="Filter beers and breweries">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="openPhoto(element.entry)">
+        {{element.entry.name}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="brewery">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Brewery</mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="openPhoto(element.entry)"> {{element.entry.brewery}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Country</mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="openPhoto(element.entry)"> {{ element.country }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="createdDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date</mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="openPhoto(element.entry)"> {{element.entry.createdDate | date:'shortDate'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a mat-icon-button [routerLink]="getEntryLink(element.entry)">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [length]="dataSource?.entriesCount"
+                 [pageIndex]="0"
+                 [pageSize]="25"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>

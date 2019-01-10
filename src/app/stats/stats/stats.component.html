@@ -1,0 +1,28 @@
+<div class="stats-container">
+
+  <div class="stats">
+
+    <div class="stat-item">
+      <div class="title">🍻 Bières ({{entries?.length}} / 1000)</div>
+      <mat-progress-bar [value]="entries?.length / 1000 * 100"></mat-progress-bar>
+    </div>
+
+
+    <div class="stat-item">
+      <div class="title">🗺 Pays ({{countries?.length}} / 197)</div>
+      <mat-progress-bar [value]="countries?.length / 197 * 100"></mat-progress-bar>
+    </div>
+
+    <div class="stat-item" *ngIf="countByYearsGraphData">
+      <canvas baseChart
+              [datasets]="countByYearsGraphData.counts"
+              [labels]="countByYearsGraphData.years"
+              [colors]="colors"
+              [chartType]="'bar'">
+      </canvas>
+    </div>
+
+
+  </div>
+
+</div>

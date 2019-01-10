@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/pointsmap",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

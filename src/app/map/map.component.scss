@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
+agm-map {
+  height: 100%;
+  flex-basis: 100%;
+
+  /deep/ .agm-map-container-inner {
+    height: 100%;
+  }
+}

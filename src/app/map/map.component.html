@@ -1,0 +1,19 @@
+<agm-map #gm [zoom]="zoom">
+  <ng-container *ngFor="let entry of entries | async">
+    <agm-marker (markerClick)="closeInfoWindow(gm.lastOpen); gm.lastOpen = infoWindow"
+                [latitude]="entry.address?.latitude"
+                [longitude]="entry.address?.longitude"
+                [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/' +entry.marker+ '.png'"
+                [title]="entry.name">
+      <agm-info-window [disableAutoPan]="true" #infoWindow>
+        <div style="min-height: 160px; min-width: 120px">
+          <div *ngIf="gm.lastOpen == infoWindow">
+            <p>{{entry.name}}</p>
+            <img [src]="entry.photo" style="height: 100px">
+          </div>
+        </div>
+      </agm-info-window>
+    </agm-marker>
+  </ng-container>
+</agm-map>
+

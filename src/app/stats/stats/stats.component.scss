@@ -1,0 +1,38 @@
+.stats-container {
+  margin: 1em auto;
+  width: 90%;
+}
+
+.stats {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  margin: 0 -1%;
+}
+
+.stat-item {
+  width: calc(46% - 2px);
+  padding: 1%;
+  margin: 1%;
+  background-color: white;
+  border: 1px solid gray;
+  font-size: 1.2em;
+  font-weight: bold;
+
+  @media screen and (max-width: 640px) {
+    min-width: 50%;
+    margin: 2% -1%;
+    flex-grow: 1;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+  }
+
+  mat-progress-bar {
+    margin-top: 10px;
+    height: 20px;
+  }
+}
